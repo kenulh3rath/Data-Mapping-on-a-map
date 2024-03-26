@@ -10,6 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GMap.NET;
+using GMap.NET.MapProviders;
+using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -30,15 +33,15 @@ namespace _30051522
         {
             InitializeComponent();
 
-            gmap = new GMap.NET.WindowsForms.GMapControl();
-            gmap.MapProvider = GMap.NET.MapProviders.GMapProviders.GoogleMap;
-            gmap.Dock = DockStyle.Fill;
-            gmap.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
-            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
-            gmap.ShowCenter = false;
-            gmap.MinZoom = 1;
-            gmap.MaxZoom = 20;
-            splitContainer1.Panel2.Controls.Add(gmap);
+            //gmap = new GMap.NET.WindowsForms.GMapControl();
+            //gmap.MapProvider = GMap.NET.MapProviders.GMapProviders.GoogleMap;
+            //gmap.Dock = DockStyle.Fill;
+            //gmap.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
+            //GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
+            //gmap.ShowCenter = false;
+            //gmap.MinZoom = 1;
+            //gmap.MaxZoom = 20;
+            //splitContainer1.Panel2.Controls.Add(gmap);
 
             try
             {
@@ -111,10 +114,11 @@ namespace _30051522
                 txtbox_inputTwo.Text = v_recordCoordinatesY;
 
                 // GMAP
-                gmap.Position = new PointLatLng(Convert.ToDouble(txtbox_inputOne.Text), Convert.ToDouble(txtbox_inputTwo.Text));
-                gmap.Zoom = 5;
-                gmap.Update();
-                gmap.Refresh();
+                //Retrive the coordinates from the value provided in the Textboxes
+                gMapMain.Position = new PointLatLng(Convert.ToDouble(txtbox_inputOne.Text), Convert.ToDouble(txtbox_inputTwo.Text));
+                gMapMain.Zoom = 5;
+                gMapMain.Update();
+                gMapMain.Refresh();
             }
             else
             {
@@ -195,17 +199,11 @@ namespace _30051522
 
                         // ----------------- GMAP -----------------
 
-                        //Layer count is just a variable to add new OverLays with different names
-                        //var markersOverlay = new GMap.NET.WindowsForms.GMapOverlay("marker1");
-                        var markersOverlay = new GMap.NET.WindowsForms.GMapOverlay(trimmedArray);
-
-                        //Marker far away in Quebec, Canada just to check my point in discussion    
-                        var marker = new GMap.NET.WindowsForms.Markers.GMarkerGoogle(
-                          new PointLatLng(x, y),
-                          GMap.NET.WindowsForms.Markers.GMarkerGoogleType.red_small);
-
-                        markersOverlay.Markers.Add(marker);
-                        gmap.Overlays.Add(markersOverlay);
+                        //Create the markers and place the pin on the coordinates
+                        GMapOverlay markers = new GMapOverlay("markers");
+                        GMapMarker marker = new GMarkerGoogle( new PointLatLng(x, y), GMarkerGoogleType.green_pushpin);
+                        markers.Markers.Add(marker);
+                        gMapMain.Overlays.Add(markers);
 
                     }
                     else
@@ -246,6 +244,13 @@ namespace _30051522
         private void active_mouse_click_Click(object sender, EventArgs e)
         {
             gmap.MouseClick += gMapControl1_MouseClick;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            gMapMain.MapProvider = GoogleMapProvider.Instance;
+            GMaps.Instance.Mode = AccessMode.ServerOnly;
+            gMapMain.ShowCenter = false;
         }
     }
 }
