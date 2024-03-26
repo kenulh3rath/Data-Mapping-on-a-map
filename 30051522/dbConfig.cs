@@ -43,7 +43,6 @@ namespace _30051522
             v_database = client.GetDatabase(db_name);
         }
 
-
         // CREATE
         public void insertData(addData insertData)
         {

@@ -25,23 +25,19 @@ namespace _30051522
         // Connect to MongoDB server
         dbConfig database;
 
+        // Create a new instance of the addData class
         static addData insertData = new addData();
 
-        GMap.NET.WindowsForms.GMapControl gmap;
 
         public Form1()
         {
             InitializeComponent();
 
-            //gmap = new GMap.NET.WindowsForms.GMapControl();
-            //gmap.MapProvider = GMap.NET.MapProviders.GMapProviders.GoogleMap;
-            //gmap.Dock = DockStyle.Fill;
-            //gmap.MapProvider = GMap.NET.MapProviders.BingMapProvider.Instance;
-            //GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
-            //gmap.ShowCenter = false;
-            //gmap.MinZoom = 1;
-            //gmap.MaxZoom = 20;
-            //splitContainer1.Panel2.Controls.Add(gmap);
+            gMapMain.MapProvider = GoogleMapProvider.Instance;
+            GMaps.Instance.Mode = AccessMode.ServerOnly;
+            gMapMain.ShowCenter = false;
+            gMapMain.MinZoom = 1;
+            gMapMain.MaxZoom = 20;
 
             try
             {
@@ -74,19 +70,30 @@ namespace _30051522
             //name input
             insertData.locationName = txtbox_name.Text;
 
-            //coordinates input
-            insertData.coordinates = new List<double>
-            { 
-                Convert.ToDouble(txtbox_inputOne.Text), 
-                Convert.ToDouble(txtbox_inputTwo.Text)
-            };
+            try
+            {
+                //coordinates input
+                insertData.coordinates = new List<double>
+                                        {
+                                            Convert.ToDouble(txtbox_inputOne.Text),
+                                            Convert.ToDouble(txtbox_inputTwo.Text)
+                                        };
 
-            database.insertData(insertData);
+                database.insertData(insertData);
 
-            insertData = new addData();
+                insertData = new addData();
 
-            emptyRecords();
-            updateData();
+                emptyRecords();
+                updateData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+            
+
+            
 
         }
 
@@ -162,6 +169,18 @@ namespace _30051522
             emptyRecords();
         }
 
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            emptyRecords();
+            updateData();
+        }
+
+        private void gMapMain_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtbox_inputOne.Text = e.X.ToString();
+            txtbox_inputTwo.Text = e.Y.ToString();
+        }
+
         private void updateData()
         {
             double x = 0;
@@ -198,10 +217,9 @@ namespace _30051522
                         y = Convert.ToDouble(values[1]);
 
                         // ----------------- GMAP -----------------
-
                         //Create the markers and place the pin on the coordinates
                         GMapOverlay markers = new GMapOverlay("markers");
-                        GMapMarker marker = new GMarkerGoogle( new PointLatLng(x, y), GMarkerGoogleType.green_pushpin);
+                        GMapMarker marker = new GMarkerGoogle(new PointLatLng(x, y), GMarkerGoogleType.green_pushpin);
                         markers.Markers.Add(marker);
                         gMapMain.Overlays.Add(markers);
 
@@ -228,29 +246,7 @@ namespace _30051522
             txtbox_name.Text = "";
             txtbox_inputOne.Text = "";
             txtbox_inputTwo.Text = "";
-        }
-
-        private void gMapControl1_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("X:" + e.X.ToString() + " and Y:" + e.Y.ToString());
-        }
-
-        private void btn_refresh_Click(object sender, EventArgs e)
-        {
-            emptyRecords();
-            updateData();
-        }
-
-        private void active_mouse_click_Click(object sender, EventArgs e)
-        {
-            gmap.MouseClick += gMapControl1_MouseClick;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            gMapMain.MapProvider = GoogleMapProvider.Instance;
-            GMaps.Instance.Mode = AccessMode.ServerOnly;
-            gMapMain.ShowCenter = false;
+            lbl_location.Text = "Select a data row";
         }
     }
 }

@@ -125,7 +125,6 @@ D:\Github\Data-Mapping-on-a-map\30051522\bin\Debug\System.Security.Principal.Win
 D:\Github\Data-Mapping-on-a-map\30051522\bin\Debug\System.Text.Encoding.CodePages.xml
 D:\Github\Data-Mapping-on-a-map\30051522\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Github\Data-Mapping-on-a-map\30051522\obj\Debug\30051522.csproj.AssemblyReference.cache
-D:\Github\Data-Mapping-on-a-map\30051522\obj\Debug\30051522.csproj.SuggestedBindingRedirects.cache
 D:\Github\Data-Mapping-on-a-map\30051522\obj\Debug\_30051522.Form1.resources
 D:\Github\Data-Mapping-on-a-map\30051522\obj\Debug\_30051522.Properties.Resources.resources
 D:\Github\Data-Mapping-on-a-map\30051522\obj\Debug\30051522.csproj.GenerateResource.cache
