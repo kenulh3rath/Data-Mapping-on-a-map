@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
@@ -28,16 +29,20 @@ namespace _30051522
         // Create a new instance of the addData class
         static addData insertData = new addData();
 
+        // Define a field to store the previously clicked marker
+        GMapMarker previousMarker = null;
+
 
         public Form1()
         {
             InitializeComponent();
 
+            gMapMain.ShowCenter = false;
             gMapMain.MapProvider = GoogleMapProvider.Instance;
             GMaps.Instance.Mode = AccessMode.ServerOnly;
             gMapMain.ShowCenter = false;
             gMapMain.MinZoom = 1;
-            gMapMain.MaxZoom = 20;
+            gMapMain.MaxZoom = 20;       
 
             try
             {
@@ -51,6 +56,7 @@ namespace _30051522
                 // Handle exceptions
                 MessageBox.Show("Error: " + ex.Message);
             }
+
         }
 
         private void Form1_Click(object sender, EventArgs e)
@@ -122,8 +128,9 @@ namespace _30051522
 
                 // GMAP
                 //Retrive the coordinates from the value provided in the Textboxes
-                gMapMain.Position = new PointLatLng(Convert.ToDouble(txtbox_inputOne.Text), Convert.ToDouble(txtbox_inputTwo.Text));
-                gMapMain.Zoom = 5;
+                gMapMain.Position = new PointLatLng(Convert.ToDouble(txtbox_inputTwo.Text), Convert.ToDouble(txtbox_inputOne.Text));
+
+                gMapMain.Zoom = 15;
                 gMapMain.Update();
                 gMapMain.Refresh();
             }
@@ -132,6 +139,7 @@ namespace _30051522
                 lbl_location.Text = "Select a data row";
             }
         }
+
 
         private void btn_update_Click(object sender, EventArgs e)
         {
@@ -177,6 +185,8 @@ namespace _30051522
 
         private void gMapMain_MouseClick(object sender, MouseEventArgs e)
         {
+            txtbox_name.Text = "New Location";
+
             txtbox_inputOne.Text = e.X.ToString();
             txtbox_inputTwo.Text = e.Y.ToString();
         }
@@ -187,11 +197,12 @@ namespace _30051522
             double y = 0;
 
             // Retrieve data from MongoDB
-            var documents = database.getData();
+            //var documents = database.getData();
 
             // Clear existing rows in the data grid
             dataGrid.Rows.Clear();
 
+            /*
             foreach (var document in documents)
             {
                 // Create a new row for the data grid
@@ -238,6 +249,69 @@ namespace _30051522
                 // Add the row to the data grid
                 dataGrid.Rows.Add(row);
             }
+            */
+
+            // Retrieve data from MongoDB
+            var documents = database.testReadData();
+
+            foreach (var document in documents)
+            {
+                // Create a new row for the data grid
+                DataGridViewRow row = new DataGridViewRow();
+
+                // Loop through each element in the document
+                foreach (var element in document.Elements)
+                {
+                    // If the element is the "Coordinates" array
+                    if (element.Value.IsBsonArray)
+                    {
+                        string trimmedArray = element.Value.ToString().Trim('[', ']');
+                        string[] values = trimmedArray.Split(',');
+
+                        foreach (var value in values)
+                        {
+                            DataGridViewCell cell = new DataGridViewTextBoxCell();
+                            cell.Value = value;
+                            row.Cells.Add(cell);
+                        }
+
+                        y = Convert.ToDouble(values[0]);
+                        x = Convert.ToDouble(values[1]);
+
+                        // ----------------- GMAP -----------------
+                        //Create the markers and place the pin on the coordinates
+
+                        GMapOverlay markers = new GMapOverlay("markers");
+                        GMapMarker marker = new GMarkerGoogle(new PointLatLng(x, y), GMarkerGoogleType.green_pushpin);
+                        marker.ToolTipText = x + ", " + y;
+                        
+                        //change tooltip style
+                        //marker.ToolTip.Fill = Brushes.Black;
+                        //marker.ToolTip.Foreground = Brushes.White;
+                        //marker.ToolTip.Stroke = Pens.Black;
+                        //marker.ToolTip.Format.Alignment = StringAlignment.Center;
+
+                        markers.Markers.Add(marker);
+                        gMapMain.Overlays.Add(markers);
+
+                    }
+                    else
+                    {
+                        // Add a new cell to the row for other elements
+                        DataGridViewCell cell = new DataGridViewTextBoxCell();
+
+                        cell.Value = element.Value.ToString(); // Convert the element value to string
+                        row.Cells.Add(cell);
+                    }
+
+
+                }
+
+                // Add the row to the data grid
+                dataGrid.Rows.Add(row);
+            }
+
+
 
         }
 
@@ -247,6 +321,11 @@ namespace _30051522
             txtbox_inputOne.Text = "";
             txtbox_inputTwo.Text = "";
             lbl_location.Text = "Select a data row";
+        }
+
+        private void txtbox_name_Click(object sender, EventArgs e)
+        {
+            txtbox_name.Text = "";
         }
     }
 }

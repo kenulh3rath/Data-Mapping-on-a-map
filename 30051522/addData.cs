@@ -14,10 +14,12 @@ namespace _30051522
         [BsonId]
         public ObjectId ID { get; set; }
 
-        [BsonElement("Name")]
+        //[BsonElement("Name")]
+        [BsonElement("feature_type")]
         public string locationName{ get; set; }
 
-        [BsonElement("Coordinates")]
+        //[BsonElement("Coordinates")]
+        [BsonElement("coordinates")]
         public List<double> coordinates { get; set; }
     }
 }

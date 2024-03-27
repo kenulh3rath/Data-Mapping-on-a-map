@@ -54,7 +54,7 @@
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(1006, 692);
+            this.lbl_name.Location = new System.Drawing.Point(1043, 671);
             this.lbl_name.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(68, 25);
@@ -63,24 +63,27 @@
             // 
             // txtbox_name
             // 
-            this.txtbox_name.Location = new System.Drawing.Point(942, 723);
+            this.txtbox_name.Location = new System.Drawing.Point(938, 702);
             this.txtbox_name.Margin = new System.Windows.Forms.Padding(6);
+            this.txtbox_name.Multiline = true;
             this.txtbox_name.Name = "txtbox_name";
-            this.txtbox_name.Size = new System.Drawing.Size(196, 31);
+            this.txtbox_name.Size = new System.Drawing.Size(256, 31);
             this.txtbox_name.TabIndex = 2;
+            this.txtbox_name.Click += new System.EventHandler(this.txtbox_name_Click);
             // 
             // txtbox_inputOne
             // 
             this.txtbox_inputOne.Location = new System.Drawing.Point(938, 819);
             this.txtbox_inputOne.Margin = new System.Windows.Forms.Padding(6);
+            this.txtbox_inputOne.Multiline = true;
             this.txtbox_inputOne.Name = "txtbox_inputOne";
-            this.txtbox_inputOne.Size = new System.Drawing.Size(78, 31);
+            this.txtbox_inputOne.Size = new System.Drawing.Size(256, 31);
             this.txtbox_inputOne.TabIndex = 4;
             // 
             // lbl_coordinates
             // 
             this.lbl_coordinates.AutoSize = true;
-            this.lbl_coordinates.Location = new System.Drawing.Point(964, 779);
+            this.lbl_coordinates.Location = new System.Drawing.Point(1011, 748);
             this.lbl_coordinates.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lbl_coordinates.Name = "lbl_coordinates";
             this.lbl_coordinates.Size = new System.Drawing.Size(128, 25);
@@ -89,10 +92,11 @@
             // 
             // txtbox_inputTwo
             // 
-            this.txtbox_inputTwo.Location = new System.Drawing.Point(1068, 817);
+            this.txtbox_inputTwo.Location = new System.Drawing.Point(938, 776);
             this.txtbox_inputTwo.Margin = new System.Windows.Forms.Padding(6);
+            this.txtbox_inputTwo.Multiline = true;
             this.txtbox_inputTwo.Name = "txtbox_inputTwo";
-            this.txtbox_inputTwo.Size = new System.Drawing.Size(78, 31);
+            this.txtbox_inputTwo.Size = new System.Drawing.Size(256, 31);
             this.txtbox_inputTwo.TabIndex = 5;
             // 
             // btn_insertData
@@ -153,20 +157,20 @@
             // grid_x
             // 
             this.grid_x.HeaderText = "X";
-            this.grid_x.MinimumWidth = 45;
+            this.grid_x.MinimumWidth = 100;
             this.grid_x.Name = "grid_x";
             this.grid_x.ReadOnly = true;
             this.grid_x.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.grid_x.Width = 45;
+            this.grid_x.Width = 200;
             // 
             // grid_y
             // 
             this.grid_y.HeaderText = "Y";
-            this.grid_y.MinimumWidth = 45;
+            this.grid_y.MinimumWidth = 100;
             this.grid_y.Name = "grid_y";
             this.grid_y.ReadOnly = true;
             this.grid_y.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.grid_y.Width = 45;
+            this.grid_y.Width = 200;
             // 
             // lbl_location
             // 
@@ -181,7 +185,7 @@
             // lbl_locationRecord
             // 
             this.lbl_locationRecord.AutoSize = true;
-            this.lbl_locationRecord.Location = new System.Drawing.Point(984, 587);
+            this.lbl_locationRecord.Location = new System.Drawing.Point(1025, 587);
             this.lbl_locationRecord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_locationRecord.Name = "lbl_locationRecord";
             this.lbl_locationRecord.Size = new System.Drawing.Size(107, 25);
@@ -216,19 +220,19 @@
             this.label1.Location = new System.Drawing.Point(902, 821);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 25);
+            this.label1.Size = new System.Drawing.Size(39, 25);
             this.label1.TabIndex = 12;
-            this.label1.Text = "X :";
+            this.label1.Text = "Y :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1032, 821);
+            this.label2.Location = new System.Drawing.Point(902, 780);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 25);
+            this.label2.Size = new System.Drawing.Size(38, 25);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Y :";
+            this.label2.Text = "X :";
             // 
             // btn_clear
             // 
@@ -325,13 +329,13 @@
         private System.Windows.Forms.Button btn_delete;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_clear;
+        private System.Windows.Forms.Button btn_refresh;
+        private GMap.NET.WindowsForms.GMapControl gMapMain;
         private System.Windows.Forms.DataGridViewTextBoxColumn data_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn grid_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn grid_x;
         private System.Windows.Forms.DataGridViewTextBoxColumn grid_y;
-        private System.Windows.Forms.Button btn_clear;
-        private System.Windows.Forms.Button btn_refresh;
-        private GMap.NET.WindowsForms.GMapControl gMapMain;
     }
 }
 

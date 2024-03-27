@@ -8,6 +8,8 @@ using System.Xml.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Core.Configuration;
+using System.Linq;
+using Amazon.Runtime.Documents;
 
 namespace _30051522
 {
@@ -15,8 +17,11 @@ namespace _30051522
     {
         private const string db_username = "kenul_h3rath";
         private const string db_password = "A1B9265cbf7889";
-        private const string db_name = "test";
-        public string db_collection = "testCollection";
+        //private const string db_name = "test";
+        //public string db_collection = "testCollection";
+
+        private const string db_name = "sample_geospatial";
+        public string db_collection = "shipwrecks";
 
         private const string db_connection = "mongodb+srv://" +
                                              db_username +
@@ -116,6 +121,26 @@ namespace _30051522
                 MessageBox.Show("Data delete failed");
             }
         }
-        
+
+        public IEnumerable<BsonDocument> testReadData()
+        {
+            // Access the collection
+            var collection = v_database.GetCollection<BsonDocument>(db_collection);
+
+            // Define the projection to include only specific fields
+            var projection = Builders<BsonDocument>.Projection
+                .Include("feature_type")
+                .Include("coordinates");
+
+            // Retrieve data from the collection with the specified projection
+            var documents = collection.Find(Builders<BsonDocument>.Filter.Empty)
+                                      .Project(projection)
+                                      .ToList();
+
+            // Return the list of extracted documents
+            return documents;
+        }
+
+
     }
 }
