@@ -196,12 +196,13 @@ namespace _30051522
             double x = 0;
             double y = 0;
 
-            // Retrieve data from MongoDB
+            // Retrieve data from MongoDB   ------ for custom database
             //var documents = database.getData();
 
             // Clear existing rows in the data grid
             dataGrid.Rows.Clear();
 
+            // update for custom database
             /*
             foreach (var document in documents)
             {
@@ -251,9 +252,12 @@ namespace _30051522
             }
             */
 
-            // Retrieve data from MongoDB
+
+            // Retrieve data from MongoDB   ------ for shipwreck database
             var documents = database.testReadData();
 
+            
+            // update for shipwreck database
             foreach (var document in documents)
             {
                 // Create a new row for the data grid
@@ -310,6 +314,7 @@ namespace _30051522
                 // Add the row to the data grid
                 dataGrid.Rows.Add(row);
             }
+            
 
 
 

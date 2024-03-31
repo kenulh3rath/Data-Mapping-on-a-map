@@ -17,9 +17,12 @@ namespace _30051522
     {
         private const string db_username = "kenul_h3rath";
         private const string db_password = "A1B9265cbf7889";
+
+        // Custom database
         //private const string db_name = "test";
         //public string db_collection = "testCollection";
 
+        // Shipwrecks database
         private const string db_name = "sample_geospatial";
         public string db_collection = "shipwrecks";
 
@@ -67,7 +70,7 @@ namespace _30051522
             }
         }
 
-        // READ
+        // READ for custom database
         public IEnumerable<BsonDocument> getData()
         {
             // Access the collection
@@ -122,6 +125,7 @@ namespace _30051522
             }
         }
 
+        // READ for Shipwrecks database
         public IEnumerable<BsonDocument> testReadData()
         {
             // Access the collection

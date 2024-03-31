@@ -54,57 +54,51 @@
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(1043, 671);
-            this.lbl_name.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbl_name.Location = new System.Drawing.Point(522, 349);
             this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(68, 25);
+            this.lbl_name.Size = new System.Drawing.Size(35, 13);
             this.lbl_name.TabIndex = 1;
             this.lbl_name.Text = "Name";
             // 
             // txtbox_name
             // 
-            this.txtbox_name.Location = new System.Drawing.Point(938, 702);
-            this.txtbox_name.Margin = new System.Windows.Forms.Padding(6);
+            this.txtbox_name.Location = new System.Drawing.Point(469, 365);
             this.txtbox_name.Multiline = true;
             this.txtbox_name.Name = "txtbox_name";
-            this.txtbox_name.Size = new System.Drawing.Size(256, 31);
+            this.txtbox_name.Size = new System.Drawing.Size(130, 18);
             this.txtbox_name.TabIndex = 2;
             this.txtbox_name.Click += new System.EventHandler(this.txtbox_name_Click);
             // 
             // txtbox_inputOne
             // 
-            this.txtbox_inputOne.Location = new System.Drawing.Point(938, 819);
-            this.txtbox_inputOne.Margin = new System.Windows.Forms.Padding(6);
+            this.txtbox_inputOne.Location = new System.Drawing.Point(469, 426);
             this.txtbox_inputOne.Multiline = true;
             this.txtbox_inputOne.Name = "txtbox_inputOne";
-            this.txtbox_inputOne.Size = new System.Drawing.Size(256, 31);
+            this.txtbox_inputOne.Size = new System.Drawing.Size(130, 18);
             this.txtbox_inputOne.TabIndex = 4;
             // 
             // lbl_coordinates
             // 
             this.lbl_coordinates.AutoSize = true;
-            this.lbl_coordinates.Location = new System.Drawing.Point(1011, 748);
-            this.lbl_coordinates.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbl_coordinates.Location = new System.Drawing.Point(506, 389);
             this.lbl_coordinates.Name = "lbl_coordinates";
-            this.lbl_coordinates.Size = new System.Drawing.Size(128, 25);
+            this.lbl_coordinates.Size = new System.Drawing.Size(63, 13);
             this.lbl_coordinates.TabIndex = 3;
             this.lbl_coordinates.Text = "Coordinates";
             // 
             // txtbox_inputTwo
             // 
-            this.txtbox_inputTwo.Location = new System.Drawing.Point(938, 776);
-            this.txtbox_inputTwo.Margin = new System.Windows.Forms.Padding(6);
+            this.txtbox_inputTwo.Location = new System.Drawing.Point(469, 404);
             this.txtbox_inputTwo.Multiline = true;
             this.txtbox_inputTwo.Name = "txtbox_inputTwo";
-            this.txtbox_inputTwo.Size = new System.Drawing.Size(256, 31);
+            this.txtbox_inputTwo.Size = new System.Drawing.Size(130, 18);
             this.txtbox_inputTwo.TabIndex = 5;
             // 
             // btn_insertData
             // 
-            this.btn_insertData.Location = new System.Drawing.Point(1204, 719);
-            this.btn_insertData.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_insertData.Location = new System.Drawing.Point(602, 374);
             this.btn_insertData.Name = "btn_insertData";
-            this.btn_insertData.Size = new System.Drawing.Size(108, 38);
+            this.btn_insertData.Size = new System.Drawing.Size(54, 20);
             this.btn_insertData.TabIndex = 6;
             this.btn_insertData.Text = "Add";
             this.btn_insertData.UseVisualStyleBackColor = true;
@@ -123,14 +117,14 @@
             this.grid_x,
             this.grid_y});
             this.dataGrid.Cursor = System.Windows.Forms.Cursors.PanNW;
-            this.dataGrid.Location = new System.Drawing.Point(12, 606);
-            this.dataGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGrid.Location = new System.Drawing.Point(6, 315);
+            this.dataGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGrid.MultiSelect = false;
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
             this.dataGrid.RowHeadersWidth = 82;
             this.dataGrid.RowTemplate.Height = 33;
-            this.dataGrid.Size = new System.Drawing.Size(850, 246);
+            this.dataGrid.Size = new System.Drawing.Size(425, 128);
             this.dataGrid.TabIndex = 7;
             this.dataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_CellClick);
             // 
@@ -175,29 +169,29 @@
             // lbl_location
             // 
             this.lbl_location.AutoSize = true;
-            this.lbl_location.Location = new System.Drawing.Point(902, 625);
-            this.lbl_location.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_location.Location = new System.Drawing.Point(451, 325);
+            this.lbl_location.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_location.Name = "lbl_location";
-            this.lbl_location.Size = new System.Drawing.Size(178, 25);
+            this.lbl_location.Size = new System.Drawing.Size(90, 13);
             this.lbl_location.TabIndex = 8;
             this.lbl_location.Text = "Select a data row";
             // 
             // lbl_locationRecord
             // 
             this.lbl_locationRecord.AutoSize = true;
-            this.lbl_locationRecord.Location = new System.Drawing.Point(1025, 587);
-            this.lbl_locationRecord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_locationRecord.Location = new System.Drawing.Point(512, 305);
+            this.lbl_locationRecord.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_locationRecord.Name = "lbl_locationRecord";
-            this.lbl_locationRecord.Size = new System.Drawing.Size(107, 25);
+            this.lbl_locationRecord.Size = new System.Drawing.Size(56, 13);
             this.lbl_locationRecord.TabIndex = 9;
             this.lbl_locationRecord.Text = "Record ID";
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(1204, 767);
-            this.btn_update.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_update.Location = new System.Drawing.Point(602, 399);
+            this.btn_update.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_update.Name = "btn_update";
-            this.btn_update.Size = new System.Drawing.Size(112, 38);
+            this.btn_update.Size = new System.Drawing.Size(56, 20);
             this.btn_update.TabIndex = 10;
             this.btn_update.Text = "Update";
             this.btn_update.UseVisualStyleBackColor = true;
@@ -205,10 +199,10 @@
             // 
             // btn_delete
             // 
-            this.btn_delete.Location = new System.Drawing.Point(1204, 812);
-            this.btn_delete.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_delete.Location = new System.Drawing.Point(602, 422);
+            this.btn_delete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_delete.Name = "btn_delete";
-            this.btn_delete.Size = new System.Drawing.Size(112, 38);
+            this.btn_delete.Size = new System.Drawing.Size(56, 20);
             this.btn_delete.TabIndex = 11;
             this.btn_delete.Text = "Delete";
             this.btn_delete.UseVisualStyleBackColor = true;
@@ -217,29 +211,26 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(902, 821);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(451, 427);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 25);
+            this.label1.Size = new System.Drawing.Size(20, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Y :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(902, 780);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(451, 406);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 25);
+            this.label2.Size = new System.Drawing.Size(20, 13);
             this.label2.TabIndex = 13;
             this.label2.Text = "X :";
             // 
             // btn_clear
             // 
-            this.btn_clear.Location = new System.Drawing.Point(1204, 667);
-            this.btn_clear.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_clear.Location = new System.Drawing.Point(602, 347);
             this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(108, 38);
+            this.btn_clear.Size = new System.Drawing.Size(54, 20);
             this.btn_clear.TabIndex = 14;
             this.btn_clear.Text = "Clear";
             this.btn_clear.UseVisualStyleBackColor = true;
@@ -247,10 +238,9 @@
             // 
             // btn_refresh
             // 
-            this.btn_refresh.Location = new System.Drawing.Point(18, 569);
-            this.btn_refresh.Margin = new System.Windows.Forms.Padding(6);
+            this.btn_refresh.Location = new System.Drawing.Point(9, 296);
             this.btn_refresh.Name = "btn_refresh";
-            this.btn_refresh.Size = new System.Drawing.Size(104, 37);
+            this.btn_refresh.Size = new System.Drawing.Size(52, 19);
             this.btn_refresh.TabIndex = 16;
             this.btn_refresh.Text = "Refresh";
             this.btn_refresh.UseVisualStyleBackColor = true;
@@ -264,8 +254,7 @@
             this.gMapMain.GrayScaleMode = false;
             this.gMapMain.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.gMapMain.LevelsKeepInMemory = 5;
-            this.gMapMain.Location = new System.Drawing.Point(24, 23);
-            this.gMapMain.Margin = new System.Windows.Forms.Padding(6);
+            this.gMapMain.Location = new System.Drawing.Point(12, 12);
             this.gMapMain.MarkersEnabled = true;
             this.gMapMain.MaxZoom = 2;
             this.gMapMain.MinZoom = 2;
@@ -279,16 +268,16 @@
             this.gMapMain.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapMain.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapMain.ShowTileGridLines = false;
-            this.gMapMain.Size = new System.Drawing.Size(1284, 535);
+            this.gMapMain.Size = new System.Drawing.Size(642, 278);
             this.gMapMain.TabIndex = 17;
             this.gMapMain.Zoom = 0D;
             this.gMapMain.MouseClick += new System.Windows.Forms.MouseEventHandler(this.gMapMain_MouseClick);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1332, 865);
+            this.ClientSize = new System.Drawing.Size(666, 450);
             this.Controls.Add(this.gMapMain);
             this.Controls.Add(this.btn_refresh);
             this.Controls.Add(this.btn_clear);
@@ -305,7 +294,6 @@
             this.Controls.Add(this.lbl_coordinates);
             this.Controls.Add(this.txtbox_name);
             this.Controls.Add(this.lbl_name);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Click += new System.EventHandler(this.Form1_Click);
